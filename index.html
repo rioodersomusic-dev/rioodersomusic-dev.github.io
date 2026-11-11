@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f2eee5">
+<meta name="apple-mobile-web-app-title" content="rio">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="covers/icon.png">
+<link rel="icon" type="image/png" href="covers/favicon.png">
+<link rel="canonical" href="https://riomusic.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="rio">
+<meta property="og:title" content="rio — keep calm and eat cereal">
+<meta property="og:description" content="songs by rio. listen to daisy, needy of you and one sided, join the cereal chat, get letters when new music drops.">
+<meta property="og:url" content="https://riomusic.netlify.app/">
+<meta property="og:image" content="https://riomusic.netlify.app/covers/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="three polaroids of rio's song covers taped to paper, with a line of cereal loops">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="rio — keep calm and eat cereal">
+<meta name="twitter:image" content="https://riomusic.netlify.app/covers/share.jpg">
+<title>rio</title>
+<meta name="description" content="songs by rio — listen, pre-save what's next, and get letters when new music drops.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Caveat:wght@500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @property --wash{syntax:'<color>';inherits:true;initial-value:#c9cde6}
+  :root{
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4  0 0 0 0 .35  0 0 0 0 .25  0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --paper:#f2eee5; --ink:#1b1f3b; --ink2:#4a4d68; --pencil:#8f8a80; --line:rgba(27,31,59,.14);
+    --wash:#c9cde6; transition:--wash 1.2s ease;
+    --hand:"Reenie Beanie", cursive; --title:"Reenie Beanie", cursive; --script:"Caveat", cursive; --mono:"DM Mono", ui-monospace, Menlo, monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%; -webkit-tap-highlight-color:transparent}
+  html,body{overflow-x:hidden} @supports (overflow:clip){html,body{overflow-x:clip}}
+  a,button,.card{touch-action:manipulation}
+  body{font-family:var(--mono); font-size:13px; color:var(--ink); background:var(--paper) url("textures/coldpress.webp") 0 0/360px 360px; background-blend-mode:hard-light; min-height:100vh; min-height:100svh; -webkit-font-smoothing:antialiased; text-align:center}
+  body::before{content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(27,31,59,.11) 1px, transparent 1.2px) 0 0/26px 26px,
+      radial-gradient(130% 100% at 50% 35%, transparent 55%, rgba(110,92,60,.16) 100%)}
+  body::after{content:""; position:fixed; inset:-6%; z-index:70; pointer-events:none; opacity:.28; mix-blend-mode:overlay; animation:grain 14s steps(28) infinite;
+    background:url("textures/grain.webp") 0 0/260px 260px}
+  @keyframes grain{0%{transform:translate(0,0)} 25%{transform:translate(-.6%,.4%)} 50%{transform:translate(.4%,-.5%)} 75%{transform:translate(-.3%,-.4%)} 100%{transform:translate(0,0)}}
+  /* rough, hand-inked edges on lettering, lines and buttons */
+  h1,h2,.sig,.btn,.swatches,.sign{filter:url(#rough)}
+  .smart h1{filter:none}
+  a{color:inherit}
+  .label{font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink2)}
+  .ink path,.ink circle,.ink line{fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+  .tape{position:absolute; width:100px; height:37px; z-index:4; top:-15px; left:50%; translate:-50% 0; rotate:-3deg;
+    background:url("textures/tape-a.webp") center/100% 100% no-repeat; filter:drop-shadow(0 1px 1px rgba(60,45,20,.18)); opacity:.95}
+  .tape.b,.card:nth-child(2) .tape{background-image:url("textures/tape-b.webp"); width:78px; rotate:4deg}
+  .card:nth-child(3) .tape{rotate:-6deg; left:62%}
+  .photo{position:relative; display:block}
+  .photo::after{content:""; position:absolute; inset:0; pointer-events:none; background:url("textures/grain.webp") 0 0/200px 200px; opacity:.22; mix-blend-mode:overlay}
+  .swatches{display:flex; gap:5px; justify-content:center}
+  .swatches i{width:14px; height:14px; border-radius:52% 48% 55% 45%/48% 55% 45% 52%; display:block}
+  .swatches i:nth-child(2){transform:translateY(1px) scale(.94)} .swatches i:nth-child(3){transform:translateY(-1px) rotate(20deg)}
+
+  .spiral{height:42px; background:url("textures/spiral.png") left top/auto 42px repeat-x; filter:drop-shadow(0 2px 1px rgba(0,0,0,.12))}
+
+  /* top */
+  .top{display:flex; justify-content:center; gap:34px; padding:22px max(20px,env(safe-area-inset-right)) 0 max(20px,env(safe-area-inset-left))}
+  .spiral{margin-top:env(safe-area-inset-top)}
+  .top a{text-decoration:none; transition:color .2s}
+  .top a:hover{color:var(--pencil)}
+
+  section,.hero{position:relative; max-width:860px; margin:0 auto; padding:70px 22px}
+
+  /* hero */
+  .hero{min-height:82vh; min-height:82svh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:20px}
+  .hero h1{transform:rotate(-4deg); margin-bottom:28px; line-height:1; font-weight:400}
+  .walk::-webkit-media-controls,.walk::-webkit-media-controls-start-playback-button{display:none!important; -webkit-appearance:none}
+  .walk{position:absolute; left:50%; top:50%; translate:-50% -50%; height:118%; width:auto; max-width:none; z-index:0; pointer-events:none;
+    opacity:.16; mix-blend-mode:multiply; -webkit-mask-image:radial-gradient(closest-side, #000 55%, transparent 100%); mask-image:radial-gradient(closest-side, #000 55%, transparent 100%)}
+  .hero > *:not(.walk){position:relative; z-index:1}
+  .write{display:inline-block; font-family:var(--hand); font-weight:400; font-size:min(262px,45.8vw); line-height:.95; color:var(--ink);
+    padding:0 .08em; -webkit-clip-path:inset(-20% 100% -20% 0); clip-path:inset(-20% 100% -20% 0); opacity:.92}
+  .write.go{animation:pen 2.2s steps(30,end) forwards, inkin 1s ease 1.8s forwards}
+  @keyframes pen{to{-webkit-clip-path:inset(-20% 0 -20% 0); clip-path:inset(-20% 0 -20% 0)}}
+  @keyframes inkin{to{opacity:1}}
+  .hero .tag{opacity:0; animation:appear 1s ease 2.4s forwards}
+  .hero .scroll{opacity:0; animation:appear 1s ease 2.9s forwards}
+  @keyframes appear{to{opacity:1}}
+  .hero .tag{font-family:var(--title); font-size:clamp(30px,9vw,44px); white-space:nowrap; line-height:1; color:var(--ink2)}
+  .hero .loops{width:min(280px,72vw); height:auto; aspect-ratio:340/70; margin-top:10px; mix-blend-mode:multiply; opacity:0; transform:translateY(6px); transition:opacity 1.6s ease, transform 1.6s ease; -webkit-mask:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent); mask:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}
+  .hero .loops.in{opacity:1; transform:none}
+  .hero .scroll{margin-top:56px; display:inline-flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none}
+  .hero .scroll svg{width:16px; height:40px; color:var(--ink2); animation:float 3s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(6px)}}
+
+  /* section heads */
+  .head{margin-bottom:46px}
+  .head .label{display:block; margin-bottom:12px}
+  .head h2{font-family:var(--hand); font-weight:400; font-size:clamp(64px,8vw,90px); line-height:.7; transform:rotate(-2deg)}
+  #songs .head h2{transform:rotate(1.5deg) translateX(8px)} #letters .head h2{transform:rotate(-1deg) translateX(-6px)}
+
+  /* release */
+  .art{position:relative; width:min(340px,78vw); margin:0 auto}
+  .art img{width:100%; aspect-ratio:1; object-fit:cover; display:block; background:#fdfcf8 url("textures/recycled.webp") 0 0/200px 200px; background-blend-mode:soft-light; padding:10px 10px 38px; box-sizing:content-box; width:calc(100% - 20px); box-shadow:inset 0 0 0 1px rgba(90,70,40,.08), inset 0 -16px 22px -18px rgba(120,96,58,.14), 0 1px 2px rgba(0,0,0,.18), 0 22px 36px -22px rgba(27,31,59,.55); transform:rotate(-1.5deg)}
+  .release h3{font-family:var(--title); font-weight:400; font-size:clamp(62px,7.5vw,84px); line-height:.8; margin:46px 0 10px; transform:rotate(-2.5deg) translateX(-10px)}
+  .release .meta{display:grid; justify-items:center; gap:12px; margin:22px 0 34px}
+  .btn{display:inline-flex; align-items:center; gap:12px; text-decoration:none; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink);
+    padding:15px 28px; border:1.6px solid var(--ink); border-radius:255px 18px 225px 16px/16px 225px 18px 255px; transform:rotate(-.8deg); transition:background .25s, color .25s, transform .25s}
+  .btn:hover{transform:rotate(.6deg)}
+  .btn:hover{background:var(--ink); color:var(--paper)}
+  .btn svg{width:28px}
+  .countdown{display:flex; justify-content:center; gap:10px; margin:-8px 0 30px}
+  .countdown div{min-width:62px; padding:8px 4px 6px; border:1px solid var(--line); border-radius:12px}
+  .countdown b{display:block; font-size:22px; font-weight:400}
+  .countdown span{font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--pencil)}
+
+  /* songs */
+  .songs-wrap{position:relative}
+  .songs{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(24px,4vw,46px)}
+  .card{cursor:pointer; outline:none}
+  .card .frame{position:relative; transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .card:nth-child(1) .frame{transform:rotate(-2deg)}
+  .card:nth-child(2) .frame{transform:rotate(1.5deg)}
+  .card:nth-child(3) .frame{transform:rotate(-1deg)}
+  .card:hover .frame,.card:focus-visible .frame{transform:rotate(0) translateY(-6px)}
+  .card img{width:calc(100% - 18px); aspect-ratio:1; object-fit:cover; display:block; background:#fdfcf8 url("textures/recycled.webp") 0 0/200px 200px; background-blend-mode:soft-light; padding:9px 9px 32px; box-sizing:content-box; box-shadow:inset 0 0 0 1px rgba(90,70,40,.08), inset 0 -14px 20px -16px rgba(120,96,58,.14), 0 1px 2px rgba(0,0,0,.18), 0 18px 28px -20px rgba(27,31,59,.6)}
+  .card h3{font-family:var(--title); font-weight:400; font-size:34px; line-height:1.05; margin-top:18px}
+  .card:nth-child(1) h3{transform:rotate(-2deg)} .card:nth-child(2) h3{transform:rotate(1.5deg)} .card:nth-child(3) h3{transform:rotate(-1deg)}
+  .card .date{font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--pencil); margin:8px 0 12px}
+  .card:focus-visible h3{text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:6px}
+
+  /* letters */
+  .envelope{position:relative; width:min(260px,66vw); margin:0 auto 34px; transform:rotate(-3deg)}
+  .envelope img{width:100%; height:auto; display:block; filter:drop-shadow(0 16px 18px rgba(60,45,20,.22))}
+  .envelope .to{position:absolute; left:0; right:0; top:68%; font-family:var(--hand); font-size:32px; line-height:.9; color:var(--ink)}
+  .letters p{font-family:var(--script); font-size:23px; color:var(--ink2); max-width:420px; margin:0 auto 28px; line-height:1.2}
+  .letters form{display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; max-width:460px; margin:0 auto}
+  .letters input{flex:1 1 220px; min-width:0; border:0; border-bottom:1.5px solid var(--ink); background:transparent; padding:6px 2px; font-family:var(--hand); font-size:32px; color:var(--ink); outline:none; text-align:center}
+  .letters input::placeholder{color:rgba(27,31,59,.32)}
+  .letters button{cursor:pointer; background:none; font-family:var(--mono)}
+  .letters .thanks{display:none; font-family:var(--hand); font-size:42px}
+  .letters.done form{display:none} .letters.done .thanks{display:block}
+  .letters .fine{font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--pencil); margin-top:16px}
+  .letters .fine:empty{display:none}
+
+
+  /* chat + letters side by side */
+  .duo{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(10px,3vw,40px); max-width:960px; margin:0 auto; padding:0 16px; align-items:start}
+  .duo > section{max-width:none; width:100%; padding:70px 8px; display:flex; flex-direction:column; align-items:center}
+  .duo .head h2{font-size:clamp(54px,6vw,80px); white-space:nowrap}
+  .duo .head{min-height:120px; display:flex; flex-direction:column; justify-content:flex-end}
+  .duo > section > *{max-width:100%} .duo #lettersBox{width:100%}
+  .duo .envelope{width:min(220px,80%)}
+  .duo .letters p{font-size:21px}
+  .duo .slip{width:min(280px,90%); margin-top:18px}
+  @media (max-width:720px){
+    .duo{grid-template-columns:minmax(0,1fr); gap:0; padding:0}
+    .duo .head h2{white-space:normal}
+    .duo > section{padding:46px 20px}
+    .duo .head{min-height:0}
+  }
+  /* discord */
+  #discord .head h2{transform:rotate(1.5deg) translateX(6px)}
+  .slip{position:relative; width:min(300px,78vw); margin:0 auto 34px; padding:30px 26px 26px; transform:rotate(1.8deg);
+    background:#fdfcf8 url("textures/recycled.webp") 0 0/200px 200px; background-blend-mode:soft-light;
+    box-shadow:inset 0 0 0 1px rgba(90,70,40,.08), 0 1px 2px rgba(0,0,0,.14), 0 18px 28px -22px rgba(27,31,59,.5)}
+  .slip p{font-family:var(--script); font-size:23px; line-height:1.2; color:var(--ink2)}
+  footer{max-width:860px; margin:40px auto 0; padding:34px 22px calc(50px + env(safe-area-inset-bottom)); border-top:1px solid var(--line)}
+  footer .sig{font-family:var(--hand); font-size:60px; line-height:.8; margin-bottom:16px}
+  footer nav{display:flex; justify-content:center; gap:22px; margin-bottom:12px}
+  footer a{text-decoration:none} footer a:hover{color:var(--pencil)}
+
+  /* note */
+  .sheet{position:fixed; inset:0; z-index:40; display:grid; place-items:center; padding:max(20px,env(safe-area-inset-top)) 16px max(20px,env(safe-area-inset-bottom)); background:rgba(27,31,59,.36); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .4s}
+  .sheet.open{opacity:1; pointer-events:auto}
+  .note{position:relative; width:min(560px,100%); max-height:90vh; max-height:88dvh; overflow:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; background:var(--paper); padding:56px clamp(24px,5vw,56px) 44px; border-radius:4px;
+    background-image:radial-gradient(circle at 1px 1px, rgba(27,31,59,.1) 1px, transparent 1.2px); background-size:26px 26px;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.55); transform:translateY(18px); transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .sheet.open .note{transform:none}
+  .note::after{content:""; position:absolute; inset:0; pointer-events:none; background:url("textures/coldpress.webp") 0 0/360px; opacity:.55; mix-blend-mode:hard-light; border-radius:inherit}
+  .note > *{position:relative; z-index:1}
+  .note .anim{display:block; width:170px; height:170px; margin:14px auto 0; opacity:.85}
+  .note img,.smart img,.card img{-webkit-user-select:none; user-select:none; -webkit-touch-callout:none; -webkit-user-drag:none}
+  body.locked{position:fixed; left:0; right:0; overflow:hidden}
+  .note.dragging > *:not(.x){transition:none; transform:translateX(var(--dx,0))}
+  .note .pic{position:relative; width:170px; margin:0 auto}
+  .note .pic img{width:calc(100% - 14px); aspect-ratio:1; object-fit:cover; display:block; background:#fdfcf8 url("textures/recycled.webp") 0 0/200px 200px; background-blend-mode:soft-light; padding:7px 7px 24px; box-sizing:content-box; transform:rotate(-2deg); box-shadow:0 14px 26px -18px rgba(0,0,0,.6)}
+  .note h3{font-family:var(--title); font-weight:400; font-size:clamp(50px,7vw,60px); line-height:.85; margin:30px 0 10px}
+  .note .meta{margin-bottom:22px}
+  .note .story{font-family:var(--script); font-size:24px; line-height:1.25; color:var(--ink); white-space:pre-line; max-width:420px; margin:0 auto}
+  .note .story.empty{color:var(--pencil)}
+  .note .sign{font-family:var(--hand); font-size:38px; margin-top:8px}
+  .note .actions{margin-top:28px}
+  .note .x{position:absolute; top:10px; right:16px; border:0; background:none; font-family:var(--hand); font-size:40px; line-height:1; color:var(--ink2); cursor:pointer; z-index:2}
+  .note .x:hover{color:var(--pencil)}
+  .note .x:focus{outline:none} .note .x:focus-visible{outline:1px dashed var(--ink2)}
+
+  .note > *:not(.x){transition:opacity .22s ease, transform .3s cubic-bezier(.2,.8,.2,1)}
+  .note.out-l > *:not(.x){opacity:0; transform:translateX(-36px)}
+  .note.out-r > *:not(.x){opacity:0; transform:translateX(36px)}
+  .note.in-r > *:not(.x){opacity:0; transform:translateX(36px); transition:none}
+  .note.in-l > *:not(.x){opacity:0; transform:translateX(-36px); transition:none}
+  .note .pager{display:flex; align-items:center; justify-content:center; gap:18px; margin-top:26px}
+  .note .pager button{border:0; background:none; font-family:var(--hand); font-size:38px; line-height:.6; color:var(--ink2); cursor:pointer; padding:6px 10px}
+  .note .pager button:hover{color:var(--ink)}
+  .note .pdots{display:flex; gap:8px}
+  .note .pdots i{width:7px; height:7px; border-radius:50%; border:1px solid var(--ink2); display:block}
+  .note .pdots i.on{background:var(--ink2)}
+  #nl-badge-frame,[id^="nl-badge"]{display:none!important}
+  /* song link page */
+  .smart{position:fixed; inset:0; z-index:45; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; display:none; background:var(--paper);
+    background-image:radial-gradient(circle at 1px 1px, rgba(27,31,59,.11) 1px, transparent 1.2px); background-size:26px 26px}
+  .smart.open{display:block; animation:fade .4s ease}
+  @keyframes fade{from{opacity:0}}
+  .smart-wrap{width:min(420px, calc(100% - 44px)); margin:0 auto; padding:calc(26px + env(safe-area-inset-top)) 0 calc(60px + env(safe-area-inset-bottom))}
+  .smart-wrap .back{display:inline-block; margin-bottom:44px; text-decoration:none}
+  .smart-wrap .back:hover{color:var(--pencil)}
+  .smart .art{width:min(300px,76vw)}
+  .smart h1{font-family:var(--title); font-weight:400; font-size:clamp(58px,15vw,74px); line-height:.85; margin:42px 0 8px}
+  .smart .by{font-family:var(--script); font-size:24px; color:var(--ink2); margin-bottom:30px}
+  .smart-list{list-style:none; border-top:1px solid var(--line); text-align:left}
+  .smart-list a{display:flex; align-items:center; justify-content:space-between; padding:17px 4px; border-bottom:1px solid var(--line); text-decoration:none; transition:padding .3s}
+  .smart-list a:hover{padding-left:12px; padding-right:12px}
+  .smart-list .svc{font-size:13px; letter-spacing:.14em; text-transform:uppercase}
+  .smart-list .go{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--pencil)}
+  .smart-list a:hover .go{color:var(--ink)}
+  .smart-foot{display:flex; justify-content:center; gap:22px; margin-top:36px}
+  .smart-foot a{text-decoration:none} .smart-foot a:hover{color:var(--pencil)}
+
+  .reveal{opacity:0; translate:0 20px; transition:opacity 1s ease, translate 1s ease}
+  .reveal.in{opacity:1; translate:0 0}
+  /* release push: while a pre-save is counting down, the page is only the countdown + pre-save */
+  body.focus .top, body.focus .hero, body.focus #songs, body.focus .duo, body.focus footer{display:none}
+  body.focus #new{min-height:calc(100vh - 42px); min-height:calc(100svh - 42px); display:flex; flex-direction:column; justify-content:center; padding-top:26px; padding-bottom:22px; opacity:1; translate:0 0}
+  body.focus #new .art{width:min(340px,72vw,40svh)}
+  body.focus #new h3{margin-top:34px} body.focus #new .meta{margin:16px 0 22px} body.focus #new .countdown{margin-bottom:24px}
+  body.focus .sheet{display:none}
+
+  @media (max-width:720px){
+    .songs{grid-template-columns:1fr 1fr; gap:34px 20px}
+    .card h3{font-size:28px}
+    section{padding:56px 20px}
+    .top{gap:24px}
+    .songs .card:last-child:nth-child(odd){grid-column:1/-1; width:calc(50% - 10px); justify-self:center}
+    /* phone: the note is a solid card that slides up from the bottom */
+    .sheet{padding:0; place-items:end stretch; opacity:1; visibility:hidden; background:rgba(27,31,59,0); backdrop-filter:none; -webkit-backdrop-filter:none;
+      transition:background .35s ease, visibility 0s linear .45s}
+    .sheet.open{visibility:visible; background:rgba(27,31,59,.22); transition:background .35s ease}
+    .note{width:100%; max-height:88dvh; padding:46px 22px calc(28px + env(safe-area-inset-bottom)); border-radius:18px 18px 0 0;
+      transform:translateY(105%); transition:transform .45s cubic-bezier(.2,.8,.2,1); box-shadow:0 -14px 40px -20px rgba(0,0,0,.45); scrollbar-width:none}
+    .note::-webkit-scrollbar{display:none}
+    .note{touch-action:pan-y; -webkit-user-select:none; user-select:none; background:var(--paper) url("textures/coldpress.webp") 0 0/360px 360px; background-blend-mode:hard-light}
+    .note::after{display:none}
+    body::after{display:none}
+    .duo .head h2,.note h3,.smart h1{line-height:1}
+    .sheet.open .note{transform:none}
+    .note::before{content:""; position:absolute; top:10px; left:50%; width:38px; height:4px; margin-left:-19px; border-radius:4px; background:rgba(27,31,59,.18); z-index:2}
+    .note .pic{width:140px}
+    .note h3{margin-top:22px}
+    .note .story{font-size:22px}
+    .note .anim{width:130px; height:130px; margin-top:6px}
+    .note .actions{margin-top:18px}
+    .note .pager{margin-top:18px}
+    .note .x{padding:6px 8px; top:6px; right:8px}
+  }
+  /* touch screens: no sticky hover states after a tap */
+  @media (hover:none){
+    .card:hover .frame{transform:none}
+    .card:nth-child(1):hover .frame{transform:rotate(-2deg)} .card:nth-child(2):hover .frame{transform:rotate(1.5deg)} .card:nth-child(3):hover .frame{transform:rotate(-1deg)}
+    .card:active .frame{transform:rotate(0) translateY(-4px)}
+    .btn:hover{transform:rotate(-.8deg); background:none; color:var(--ink)}
+    .btn:active{background:var(--ink); color:var(--paper)}
+    .smart-list a:hover{padding-left:4px; padding-right:4px}
+    .smart-list a:active{background:rgba(27,31,59,.05)}
+  }
+  @media (prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important} .reveal{opacity:1; translate:0 0}
+    .write{-webkit-clip-path:none; clip-path:none; opacity:1} .walk{display:none} .hero .tag,.hero .scroll{opacity:1} .hero .loops{transition:none} }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter>
+  <filter id="roughEdge" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="3" seed="8"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter>
+</svg>
+<div class="spiral" aria-hidden="true"></div>
+
+<nav class="top label"><a href="#new">new</a><a href="#songs">songs</a><a href="#discord">discord</a><a href="#letters">letters</a></nav>
+
+<main id="top">
+  <div class="hero">
+    <img class="walk" src="anim/walk.gif" alt="" aria-hidden="true">
+    <h1><span class="write">rio</span></h1>
+    <p class="tag">keep calm and eat cereal</p>
+    <img class="loops" src="anim/rio-loops.gif" alt="" aria-hidden="true">
+    <a class="scroll label" href="#new">listen<svg class="ink" viewBox="0 0 16 40"><path d="M8 2 C 6 14, 10 24, 8 36"/><path d="M3 30 L8 37 L13 30"/></svg></a>
+  </div>
+
+  <section id="new" class="reveal release">
+    <div class="head"><span class="label" id="dropLabel">new single</span></div>
+    <div id="dropCard"></div>
+  </section>
+
+  <section id="songs" class="reveal">
+    <div class="head"><span class="label">all songs</span><h2>songs</h2></div>
+    <div class="songs-wrap"><div class="songs" id="songGrid"></div></div>
+  </section>
+
+  <div class="duo">
+  <section id="discord" class="reveal discord">
+    <div class="head"><span class="label">discord</span><h2>the cereal chat</h2></div>
+    <div class="slip">
+      <span class="tape b"></span>
+      <p>a little corner to hang out with me and everyone who listens. come say hi ✶</p>
+    </div>
+    <a class="btn" href="https://discord.com/invite/775vrrFnuQ" target="_blank" rel="noopener">join the discord
+      <svg class="ink" viewBox="0 0 28 12"><path d="M1 6 L26 6"/><path d="M21 1 L26 6 L21 11"/></svg></a>
+  </section>
+
+  <section id="letters" class="reveal letters">
+    <div class="head"><span class="label">mailing list</span><h2>letters</h2></div>
+    <div id="lettersBox" class="letters">
+      <div class="envelope">
+        <img src="textures/envelope.webp" alt="" loading="lazy" decoding="async" width="620" height="656">
+        <div class="to">to: you ✶</div>
+      </div>
+      <p>new songs first, with a pre-save link and a little drawn poster. nothing else, promise.</p>
+      <form id="signup" novalidate>
+        <input type="email" id="email" placeholder="your email" required autocomplete="email">
+        <button class="btn" type="submit">join</button>
+      </form>
+      <div class="thanks">you're on the list ✶</div>
+      <p class="fine" id="fine"></p>
+    </div>
+  </section>
+  </div>
+
+</main>
+
+<footer>
+  <div class="sig">rio</div>
+  <nav class="label" id="socials"></nav>
+  <div class="label" style="color:var(--pencil)">© <span id="yr"></span></div>
+</footer>
+
+<div class="smart" id="smart" aria-hidden="true"></div>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="note" role="dialog" aria-modal="true" aria-labelledby="noteTitle" id="note"></div>
+</div>
+
+<script>
+/* ============================================================
+   EDIT HERE ✦ everything on the site comes from these bits
+   ============================================================ */
+
+// When a new song is coming: fill this in and the "new" section becomes a
+// pre-save section with a countdown. When it's out, it flips to "out now".
+const NEXT_DROP = {
+  title: "could've been",
+  date: "2026-11-27T00:00:00-05:00",
+  presave: "https://distrokid.com/hyperfollow/rio76/couldve-been-2",
+  cover: "covers/couldve-been.jpg"
+};
+/* example:
+const NEXT_DROP = {
+  title: "new song",
+  date: "2026-12-04T00:00:00-05:00",
+  presave: "https://distrokid.com/hyperfollow/rio76/new-song",
+  cover: "covers/new-song.jpg"
+};
+*/
+
+// MAILING LIST — paste the two numbers from your MailerLite embedded form here.
+// (in MailerLite: Forms → your form → Embed → HTML; the form's action looks like
+//  https://assets.mailerlite.com/jsonp/ACCOUNT/forms/FORM/subscribe )
+const MAILERLITE = { account:"2771406", form:"203348777733457135" };
+
+// VISITOR STATS — your GoatCounter code (the "rio" part of rio.goatcounter.com). leave "" to turn off.
+const GOATCOUNTER = "";
+
+const SOCIALS = [
+  ["instagram","https://www.instagram.com/rioodersoo"],
+  ["tiktok","https://www.tiktok.com/@rioodersoo"],
+  ["discord","https://discord.com/invite/775vrrFnuQ"]
+];
+
+// slug: the song's own link page (yoursite.com/#daisy)
+// links: [platform, url] — add a row and it shows up on the song's link page
+// preview: the spotify track id for the little player on the song's link page
+// palette: 3 close colours from the cover (dots + the soft glow on hover)
+// doodle: the hand-drawn animation in the note — file anim/rio-<doodle>.gif (daisies, birds, stars)
+// story: rio's little note about the song
+const SONGS = [
+  { title:"daisy", slug:"daisy", preview:"1mo65MgzcExbONwlwjS6u3", date:"2026-09-11", cover:"covers/daisy.jpg",
+    links:[
+      ["Spotify","https://open.spotify.com/album/5gdiQH4G7VQfRvaG1FRtFI"],
+      ["Apple Music","https://music.apple.com/us/album/daisy-single/6803982074"],
+      ["YouTube Music","https://music.youtube.com/watch?v=juK1kh8mP1o"],
+      ["Amazon Music","https://music.amazon.com/albums/B0HG29K5CL"],
+      ["TIDAL","https://listen.tidal.com/track/554431435"],
+      ["Deezer","https://www.deezer.com/album/1059798272"],
+      ["YouTube","https://www.youtube.com/watch?v=juK1kh8mP1o"],
+      ["iTunes","https://music.apple.com/us/album/daisy-single/6803982074?app=itunes"] ],
+    palette:["#5d7353","#7e9170","#a3b293"], doodle:"daisies",
+    story:"daisy is a song i wrote during a very specific time in summer. the melody came to me after being in a field with a person i secretly liked. after that i went home and wrote the song" },
+  { title:"needy of you", slug:"needy-of-you", preview:"5c6oMsXCln7jJxDr6urBEG", date:"2026-03-06", cover:"covers/needy.jpg",
+    links:[
+      ["Spotify","https://open.spotify.com/album/5kjOZuyZT4zqs7o2wUpEf5"],
+      ["Apple Music","https://music.apple.com/us/album/needy-of-you-single/6821956891"],
+      ["YouTube Music","https://music.youtube.com/watch?v=fHk93L7Hu3U"],
+      ["Amazon Music","https://music.amazon.com/albums/B0HMQXCCNP"],
+      ["TIDAL","https://listen.tidal.com/track/497419223"],
+      ["Deezer","https://www.deezer.com/album/914909441"],
+      ["YouTube","https://www.youtube.com/watch?v=fHk93L7Hu3U"],
+      ["Pandora","https://www.pandora.com/TR:192320303"],
+      ["iTunes","https://music.apple.com/us/album/needy-of-you-single/6821956891?app=itunes"] ],
+    palette:["#3d4a8c","#5d68a6","#8189bf"], doodle:"birds",
+    story:"needy of you explores what it feels like to me to genuinely yearn for someone - i couldnt hate you if i want to" },
+  { title:"one sided", slug:"one-sided", preview:"17nErFPO1JI2ql73AteUWz", date:"2025-10-10", cover:"covers/onesided.jpg",
+    links:[
+      ["Spotify","https://open.spotify.com/album/309KikmmardzyvZosBNNMh"],
+      ["Apple Music","https://music.apple.com/us/album/one-sided-single/1844404577"],
+      ["YouTube Music","https://music.youtube.com/watch?v=RCVNx2zKulA"],
+      ["Amazon Music","https://music.amazon.com/albums/B0FTVKN4HV"],
+      ["TIDAL","https://listen.tidal.com/track/464839661"],
+      ["Deezer","https://www.deezer.com/album/832381251"],
+      ["YouTube","https://www.youtube.com/watch?v=RCVNx2zKulA"],
+      ["Pandora","https://www.pandora.com/TR:175268649"],
+      ["iTunes","https://music.apple.com/us/album/one-sided-single/1844404577?app=itunes"] ],
+    palette:["#2b2838","#4a4560","#6f6987"], doodle:"stars",
+    story:"one sided will forever be special. its the first song ive ever fully made. i wrote it in my bedroom and produced it without really knowing what i was doing. it started this whole journey and speaks about my first time ever loving someone" }
+];
+
+/* ============================================================ */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const asDate = d => new Date(d + (d.length===10 ? "T12:00:00" : ""));
+const fmt = d => asDate(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}).toLowerCase();
+const dots = p => `<div class="swatches">${p.map(c => `<i style="background:${esc(c)}"></i>`).join("")}</div>`;
+const arrow = `<svg class="ink" viewBox="0 0 28 12"><path d="M1 6 L26 6"/><path d="M21 1 L26 6 L21 11"/></svg>`;
+
+let drop = NEXT_DROP;
+if (!drop && location.hash === "#presave-preview") {
+  drop = { title:"new song", date:new Date(Date.now()+9*864e5+5*36e5).toISOString(), presave:"#letters", cover:"covers/needy.jpg" };
+}
+
+function renderDrop(){
+  const upcoming = drop && asDate(drop.date) > new Date();
+  document.body.classList.toggle("focus", !!upcoming);
+  const s = drop ? {title:drop.title, date:drop.date, cover:drop.cover, link:upcoming ? drop.presave : "#letters", palette:null}
+                 : {title:SONGS[0].title, date:SONGS[0].date, cover:SONGS[0].cover, link:"#"+SONGS[0].slug, palette:SONGS[0].palette};
+  $("dropLabel").textContent = upcoming ? "coming soon" : "new single — out now";
+  $("dropCard").innerHTML = `
+    <div class="art"><span class="tape"></span><span class="photo"><img src="${esc(s.cover)}" alt="${esc(s.title)} cover art"></span></div>
+    <h3>${esc(s.title)}</h3>
+    <div class="meta"><div class="label">${fmt(s.date)}</div>${s.palette ? dots(s.palette) : ""}</div>
+    ${upcoming ? '<div class="countdown" id="cd"></div>' : ""}
+    <a class="btn" href="${esc(s.link)}">${upcoming ? "pre-save" : "listen"} ${arrow}</a>`;
+  if (upcoming){ tick(); setInterval(tick, 1000); }
+}
+function tick(){
+  const el = $("cd"); if (!el) return;
+  const ms = Math.max(0, asDate(drop.date) - new Date());
+  const d = Math.floor(ms/864e5), h = Math.floor(ms/36e5)%24, m = Math.floor(ms/6e4)%60, s = Math.floor(ms/1e3)%60;
+  el.innerHTML = [[d,"days"],[h,"hrs"],[m,"min"],[s,"sec"]].map(([v,l]) => `<div><b>${String(v).padStart(2,"0")}</b><span>${l}</span></div>`).join("");
+  if (ms === 0) renderDrop();
+}
+
+function renderSongs(){
+  const grid = $("songGrid");
+  grid.innerHTML = SONGS.map((s,i) => `
+    <article class="card" tabindex="0" data-i="${i}" aria-label="read about ${esc(s.title)}">
+      <div class="frame"><span class="tape"></span><span class="photo"><img src="${esc(s.cover)}" alt="${esc(s.title)} cover art" loading="lazy" decoding="async"></span></div>
+      <h3>${esc(s.title)}</h3>
+      <div class="date">${fmt(s.date)}</div>
+      ${dots(s.palette)}
+    </article>`).join("");
+  grid.querySelectorAll(".card").forEach(el => {
+    const s = SONGS[+el.dataset.i];
+    el.addEventListener("mouseenter", () => setWash(s.palette[2]));
+    el.addEventListener("focus", () => setWash(s.palette[2]));
+    el.addEventListener("click", () => openNote(+el.dataset.i));
+    el.addEventListener("keydown", e => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); openNote(+el.dataset.i); } });
+  });
+  grid.addEventListener("mouseleave", () => setWash(null));
+}
+function setWash(c){ document.documentElement.style.setProperty("--wash", c || "#c9cde6"); }
+
+// song notes
+const sheet = $("sheet"), note = $("note"), smart = $("smart");
+let lastFocus = null;
+let cur = 0;
+function fillNote(i){
+  const s = SONGS[i]; cur = i;
+  const has = s.story && s.story.trim();
+  note.innerHTML = `
+    <button class="x" aria-label="close">×</button>
+    <div class="pic"><span class="tape"></span><img src="${esc(s.cover)}" alt="${esc(s.title)} cover art"></div>
+    <h3 id="noteTitle">${esc(s.title)}</h3>
+    <div class="meta">${dots(s.palette)}</div>
+    <p class="story ${has ? "" : "empty"}">${has ? esc(s.story.trim()) : "a little note about this one is coming soon…"}</p>
+    ${has ? '<div class="sign">— rio</div>' : ""}
+    ${s.doodle ? `<img class="anim" src="anim/rio-${esc(s.doodle)}.gif" alt="">` : ""}
+    <div class="actions"><a class="btn" href="#${esc(s.slug)}">listen ${arrow}</a></div>
+    <div class="pager label">
+      <button class="pv" aria-label="previous song">‹</button>
+      <span class="pdots">${SONGS.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("")}</span>
+      <button class="nx" aria-label="next song">›</button>
+    </div>`;
+  note.querySelector(".x").onclick = closeNote;
+  note.querySelector(".pv").onclick = () => step(-1);
+  note.querySelector(".nx").onclick = () => step(1);
+  note.scrollTop = 0;
+}
+function step(d){
+  if (note.classList.contains("turning")) return;
+  note.classList.remove("dragging"); note.style.removeProperty("--dx");
+  const n = (cur + d + SONGS.length) % SONGS.length;
+  note.classList.add("turning", d > 0 ? "out-l" : "out-r");
+  setTimeout(() => {
+    fillNote(n);
+    note.classList.remove("out-l","out-r"); note.classList.add(d > 0 ? "in-r" : "in-l");
+    requestAnimationFrame(() => requestAnimationFrame(() => { note.classList.remove("in-r","in-l"); setTimeout(()=>note.classList.remove("turning"), 320); }));
+  }, 220);
+}
+/* lock the page behind overlays (iPhone Safari ignores overflow:hidden on body) */
+let lockY = 0;
+function lockScroll(){
+  if (document.body.classList.contains("locked")) return;
+  lockY = scrollY; document.body.style.top = -lockY + "px"; document.body.classList.add("locked");
+}
+function unlockScroll(){
+  if (!document.body.classList.contains("locked") || sheet.classList.contains("open") || smart.classList.contains("open")) return;
+  document.body.classList.remove("locked"); document.body.style.top = "";
+  scrollTo({top:lockY, left:0, behavior:"instant"});
+}
+function openNote(i){
+  lastFocus = document.activeElement;
+  fillNote(i);
+  note.style.transform = ""; note.style.transition = "";
+  sheet.classList.add("open"); sheet.setAttribute("aria-hidden","false");
+  lockScroll();
+  if (matchMedia("(hover:hover)").matches) note.querySelector(".x").focus({preventScroll:true});
+}
+/* swipe between songs */
+{ let x0 = 0, y0 = 0, dx = 0, dy = 0, mode = null, top0 = 0;
+  const phone = () => matchMedia("(max-width:720px)").matches;
+  const reset = () => { note.classList.remove("dragging"); note.style.removeProperty("--dx"); };
+  note.addEventListener("touchstart", e => {
+    if (e.touches.length > 1 || note.classList.contains("turning")) { mode = "off"; return; }
+    const t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; dx = dy = 0; mode = null; top0 = note.scrollTop;
+  }, {passive:true});
+  note.addEventListener("touchmove", e => {
+    if (mode === "off") return;
+    const t = e.touches[0]; dx = t.clientX - x0; dy = t.clientY - y0;
+    if (!mode && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+      if (Math.abs(dx) > Math.abs(dy)) mode = "h";
+      else if (dy > 0 && top0 <= 0 && note.scrollTop <= 0 && phone()) mode = "down";
+      else mode = "v";
+    }
+    if (mode === "h") { e.preventDefault(); note.classList.add("dragging"); note.style.setProperty("--dx", (dx * .55) + "px"); }
+    else if (mode === "down") { e.preventDefault(); note.style.transition = "none"; note.style.transform = `translateY(${Math.max(0, dy)}px)`; }
+  }, {passive:false});
+  const end = () => {
+    if (mode === "h") { reset(); if (Math.abs(dx) > 60) step(dx < 0 ? 1 : -1); }
+    else if (mode === "down") {
+      note.style.transition = ""; note.style.transform = "";
+      if (dy > 110) closeNote();
+    }
+    mode = null;
+  };
+  note.addEventListener("touchend", end, {passive:true});
+  note.addEventListener("touchcancel", () => { if (mode === "h") reset(); note.style.transition = ""; note.style.transform = ""; mode = null; }, {passive:true});
+}
+function closeNote(){
+  sheet.classList.remove("open"); sheet.setAttribute("aria-hidden","true");
+  unlockScroll();
+  if (lastFocus && document.contains(lastFocus) && matchMedia("(hover:hover)").matches) lastFocus.focus({preventScroll:true});
+}
+sheet.addEventListener("click", e => { if (e.target === sheet) closeNote(); });
+addEventListener("keydown", e => { if (!sheet.classList.contains("open")) return;
+  if (e.key==="Escape") closeNote(); else if (e.key==="ArrowRight") step(1); else if (e.key==="ArrowLeft") step(-1); });
+
+// song link pages: yoursite.com/#daisy
+function renderSmart(){
+  const s = SONGS.find(x => x.slug === location.hash.slice(1));
+  if (!s){
+    if (smart.classList.contains("open")){ smart.classList.remove("open"); smart.setAttribute("aria-hidden","true"); unlockScroll(); }
+    return;
+  }
+  if (sheet.classList.contains("open")) closeNote();
+  smart.innerHTML = `
+    <div class="spiral" aria-hidden="true"></div>
+    <div class="smart-wrap">
+      <a class="back label" href="#">← rio</a>
+      <div class="art"><span class="tape"></span><img src="${esc(s.cover)}" alt="${esc(s.title)} cover art"></div>
+      <h1>${esc(s.title)}</h1>
+      <div class="by">by rio</div>
+      <ul class="smart-list">
+        ${s.links.map(([n,u]) => `<li><a href="${esc(u)}"><span class="svc">${esc(n)}</span><span class="go">${n==="iTunes"?"buy":"play"} →</span></a></li>`).join("")}
+      </ul>
+      <div class="smart-foot label">
+        ${SOCIALS.map(([n,u]) => `<a href="${esc(u)}">${esc(n)}</a>`).join("")}
+        <a href="#letters" id="smartLetters">letters</a>
+      </div>
+    </div>`;
+  $("smartLetters").onclick = e => {
+    e.preventDefault(); history.pushState("", "", location.pathname + location.search); renderSmart();
+    $("letters").scrollIntoView({behavior:"smooth"});
+  };
+  smart.classList.add("open"); smart.setAttribute("aria-hidden","false");
+  lockScroll(); smart.scrollTop = 0;
+}
+addEventListener("hashchange", renderSmart);
+
+// mailing list — placeholder until the email service is connected
+$("signup").addEventListener("submit", async e => {
+  e.preventDefault();
+  const v = $("email").value.trim(), btn = e.target.querySelector("button");
+  if (!/^\S+@\S+\.\S+$/.test(v)) { $("email").focus(); return; }
+  if (!MAILERLITE.account || !MAILERLITE.form) {
+    $("lettersBox").classList.add("done");
+    $("fine").textContent = "(preview: signups get saved once the mailing list is connected)";
+    return;
+  }
+  btn.disabled = true; btn.textContent = "…";
+  try {
+    const body = new FormData(); body.append("fields[email]", v); body.append("ml-submit", "1"); body.append("anticsrf", "true");
+    const r = await fetch(`https://assets.mailerlite.com/jsonp/${MAILERLITE.account}/forms/${MAILERLITE.form}/subscribe`, {method:"POST", body});
+    const j = await r.json().catch(() => ({}));
+    if (r.ok && j.success !== false) { $("lettersBox").classList.add("done"); $("fine").textContent = "check your inbox to confirm ✶"; track("signup"); }
+    else throw 0;
+  } catch {
+    $("fine").textContent = "hm, that didn't go through. try again in a sec?";
+  } finally { btn.disabled = false; btn.textContent = "join"; }
+});
+
+/* visitor stats (no cookies) + which links people tap */
+function track(name){ if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:"click/" + name, title:name, event:true}); }
+if (GOATCOUNTER) { const g = document.createElement("script"); g.async = true; g.src = "//gc.zgo.at/count.js"; g.dataset.goatcounter = `https://${GOATCOUNTER}.goatcounter.com/count`; document.head.appendChild(g); }
+document.addEventListener("click", e => {
+  const a = e.target.closest("a"); if (!a) return;
+  const svc = a.querySelector(".svc");
+  if (svc) { const slug = (location.hash || "#").slice(1); track(`${slug}/${svc.textContent.trim().toLowerCase().replace(/\s+/g,"-")}`); }
+  else if (/discord\.com/.test(a.href)) track("discord");
+  else if (/instagram\.com/.test(a.href)) track("instagram");
+  else if (/tiktok\.com/.test(a.href)) track("tiktok");
+});
+
+$("socials").innerHTML = SOCIALS.map(([n,u]) => `<a href="${esc(u)}">${esc(n)}</a>`).join("");
+$("yr").textContent = new Date().getFullYear();
+renderDrop(); renderSongs(); renderSmart();
+(document.fonts ? document.fonts.load('340px "Reenie Beanie"').catch(()=>{}) : Promise.resolve()).then(() => document.querySelector(".write").classList.add("go"));
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.08});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+<script>
+(()=>{const l=document.querySelector('.hero .loops'); if(!l) return;
+ const go=()=>{ if(scrollY>30){ l.classList.add('in'); removeEventListener('scroll',go); } };
+ addEventListener('scroll',go,{passive:true}); go();})();
+</script>
+</body>
+</html>
